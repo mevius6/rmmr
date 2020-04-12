@@ -1,0 +1,5 @@
+.DS_Store
+.now
+node_modules
+package-lock.json
+puplic
