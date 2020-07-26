@@ -85,7 +85,7 @@ template.innerHTML = `
   </style>
   <form>
     <fieldset>
-      <legend>Поменять оформление:</legend>
+      <!--<legend>Поменять оформление:</legend>-->
       <input id="lightRadio" type="radio" name="mode" value="${LIGHT}">
       <label id="lightLabel" for="lightRadio"></label>
       <input id="darkRadio" type="radio" name="mode" value="${DARK}">

@@ -9,10 +9,10 @@ const body = document.body;
 const toggle = document.querySelector('theme-switch');
 // const cursor = new MouseCursor(document.querySelector('.cursor'));
 
-[...document.querySelectorAll('a, button')].forEach(el => {
-  el.addEventListener('mouseenter', () => cursor.emit('enter'));
-  el.addEventListener('mouseleave', () => cursor.emit('leave'));
-});
+// [...document.querySelectorAll('a, button')].forEach(el => {
+//   el.addEventListener('mouseenter', () => cursor.emit('enter'));
+//   el.addEventListener('mouseleave', () => cursor.emit('leave'));
+// });
 
 toggle.addEventListener('colorschemechange', () => {
   root.setAttribute('data-theme', toggle.mode);
