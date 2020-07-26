@@ -12,8 +12,8 @@ block content
   section.hero
     each i in Array.from(Array(15).keys())
       picture.hero__img
-        source(srcset=`/images/${i}.webp` type="image/webp")
-        img(src=`/images/${i}.jpg` alt="..")
+        source(srcset=`./images/${i}.webp` type="image/webp")
+        img(src=`./images/${i}.jpg` alt="..")
     h1.hero__title
       | rmmr
   section.about
