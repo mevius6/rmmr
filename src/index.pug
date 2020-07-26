@@ -3,20 +3,20 @@ extends ./pug/page
 block vars
 
 block content
-  .a2hs
+  .a2hs.hidden
     +cta({
       base: 'a2hs',
       type: 'button',
       text: 'Установить'
     })
   section.hero
-    each i in Array.from(Array(15).keys())
+    //- each i in Array.from(Array(15).keys())
       picture.hero__img
         source(srcset=`./images/${i}.webp` type="image/webp")
         img(src=`./images/${i}.jpg` alt="..")
     h1.hero__title
       | rmmr
-  section.about
+  //- section.about
 
 block scripts
   script(src="./js/index.js")

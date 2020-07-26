@@ -1,6 +1,6 @@
 import * as ThemeSwitch from './ThemeSwitch';
 import MouseCursor from './MouseCursor';
-import { ImageTrail } from './ImageTrail';
+// import { ImageTrail } from './ImageTrail';
 import { canUseWebP } from './utils';
 
 const root = document.documentElement;
@@ -22,7 +22,7 @@ window.addEventListener('load', () => {
   root.classList.add(`${canUseWebP() ? 'webp' : 'no-webp'}`);
   body.classList.remove('loading');
   body.classList.add('loaded');
-  new ImageTrail();
+  // new ImageTrail();
 });
 
 const title = document.querySelector('.hero__title');
