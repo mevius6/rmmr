@@ -1,0 +1,46 @@
+{
+  "name": "rmmr.studio",
+  "version": "1.0.0",
+  "description": "rmmr.studio",
+  "engines": {
+    "node": "12.x"
+  },
+  "source": "src/index.pug",
+  "default": "public/index.html",
+  "targets": {
+    "default": {
+      "publicUrl": "./public/"
+    }
+  },
+  "scripts": {
+    "start": "parcel src/index.pug --no-cache --dist-dir ./public",
+    "restart": "npm run clean && npm run start",
+    "build": "npm run clean && parcel build src/index.pug --no-cache --no-source-maps",
+    "clean": "rm -rf public && rm -rf .parcel-cache"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mevius6/rmmr.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mevius6/rmmr/issues"
+  },
+  "homepage": "https://github.com/mevius6/rmmr#readme",
+  "devDependencies": {
+    "autoprefixer": "^9.8.0",
+    "parcel": "^2.0.0-nightly.277",
+    "pug": "^2.0.4",
+    "sass": "^1.26.7"
+  },
+  "dependencies": {
+    "gsap": "^3.3.0"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not ie <= 11",
+    "not dead",
+    "not op_mini all"
+  ]
+}

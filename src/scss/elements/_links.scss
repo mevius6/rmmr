@@ -1,0 +1,25 @@
+a {
+  &:link,
+  &:visited {
+    color: var(--link, var(--action));
+    transition: all 150ms ease-in-out;
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: var(--link, var(--focus));
+  }
+
+  &:focus-visible {
+    outline: 2px dotted var(--focus);
+  }
+
+  &[href*='://'] {
+    &::after {
+      content: ' ↗';
+      font-size: 0.5em;
+      font-weight: bold;
+    }
+  }
+}

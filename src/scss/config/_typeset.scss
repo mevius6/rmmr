@@ -1,0 +1,24 @@
+@use 'util';
+@use 'fvar';
+
+@mixin typeset($font) {
+  $fonts: (
+    'display': (
+      'name': 'Minérale Variable',
+      'axis': 'wght',
+    ),
+    'serif': (
+      'name': '',
+    ),
+    'sans': (
+      'name': 'Inter',
+    ),
+  );
+  $has-variable-axis: util.check($fonts, $font, 'axis');
+
+  font-family: util.fetch($fonts, $font, 'name');
+
+  @if $has-variable-axis {
+    font-variation-settings: fvar.weight('light');
+  }
+}

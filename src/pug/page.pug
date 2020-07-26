@@ -1,0 +1,15 @@
+include ./mixins
+
+block vars
+
+doctype html
+html(class="no-js" dir="ltr" lang="ru")
+  head
+    include ./_head
+  body.loading
+    include ./_nav
+    main
+      block content
+    include ./_cursor
+
+    block scripts

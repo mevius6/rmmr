@@ -1,0 +1,13 @@
+.nav {
+  position: absolute;
+  z-index: 9999;
+  top: 0;
+
+  &__items {
+    margin: 1rem;
+  }
+
+  &__items > * + * {
+    margin-block-start: 1rem;
+  }
+}

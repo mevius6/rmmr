@@ -1,0 +1,61 @@
+@use 'sass:map';
+
+@mixin directional-clipping() {
+  $triangles: (
+    1: 'polygon(0 0, 100% 0, 50% 50%, 50% 50%)',
+    2: 'polygon(100% 0, 100% 100%, 50% 50%)',
+    3: 'polygon(0 100%, 100% 100%, 50% 50%)',
+    4: 'polygon(0 0, 0 100%, 50% 50%)',
+  );
+  $offsets: (
+    0: 'inset(0 0 0 0)',
+    1: 'inset(0 0 100% 0)',
+    2: 'inset(0 0 0 100%)',
+    3: 'inset(100% 0 0 0)',
+    4: 'inset(0 100% 0 0)',
+  );
+  $rect: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)';
+
+  span, p {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    clip-path: var(--geometry);
+  }
+
+  span {
+    z-index: var(--integer, 1);
+  }
+
+  p {
+    display: grid;
+    place-content: center;
+    transition: clip-path .25s ease;
+    background: var(--accent);
+    color: var(--background);
+  }
+
+  @for $i from 1 through 4 {
+    span {
+      &:nth-of-type(#{$i}) {
+        --geometry: #{map.get($triangles, $i)};
+      }
+
+      &:nth-of-type(#{$i}):hover {
+        --geometry: #{$rect};
+        --integer: 2;
+      }
+
+      &:nth-of-type(#{$i}):hover ~ p:nth-of-type(#{$i}) {
+        --geometry: #{map.get($offsets, 0)};
+      }
+    }
+
+    p:nth-of-type(#{$i}) {
+      --geometry: #{map.get($offsets, $i)};
+    }
+  }
+}

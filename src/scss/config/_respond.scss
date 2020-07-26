@@ -1,0 +1,24 @@
+@use 'sass:map';
+@use 'util';
+
+@mixin respond($break) {
+  $width-breaks: (
+    'mobile': 20rem,
+    'tablet': 48rem,
+    'laptop': 80rem,
+  );
+  $has-width-break: map.has-key($width-breaks, $break);
+
+  @if $has-width-break {
+    $breakpoint: map.get($width-breaks, $break);
+
+    @media screen and (min-width: $breakpoint) {
+      @content;
+    }
+  }
+  @if $break == 'retina' {
+    @media screen and (-webkit-min-device-pixel-ratio: 2), screen and (min-resolution: 2dppx) {
+      @content;
+    }
+  }
+}

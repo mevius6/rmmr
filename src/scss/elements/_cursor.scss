@@ -1,0 +1,23 @@
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  z-index: 9999;
+  opacity: var(--alpha, 1);
+  pointer-events: none;
+  transform:
+    translateX(var(--tx, 0))
+    translateY(var(--ty, 0));
+
+  &__inner {
+    fill: none;
+    filter: var(--cursor-svg-filter, none);
+    stroke: var(--cursor-stroke-color);
+    stroke-width: var(--cursor-stroke-width);
+  }
+
+  @media (hover: hover) {
+    & { display: block; }
+  }
+}

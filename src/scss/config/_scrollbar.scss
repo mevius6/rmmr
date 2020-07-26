@@ -1,0 +1,22 @@
+@mixin scrollbar($width: 0, $background-color: initial, $foreground-color: initial) {
+  &::-webkit-scrollbar {
+    width: $width;
+
+    &-thumb {
+      border: 0;
+      border-radius: 0;
+      background: $foreground-color;
+    }
+    &-track {
+      background: $background-color;
+    }
+  }
+
+  @supports (scrollbar-width: thin) {
+    & {
+      scrollbar-width: none;
+      scrollbar-color: inherit;
+      // -ms-overflow-style: none;
+    }
+  }
+}

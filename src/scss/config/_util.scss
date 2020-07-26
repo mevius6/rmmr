@@ -1,0 +1,50 @@
+@use 'sass:list';
+@use 'sass:map';
+
+@function multimerge($maps...) {
+  $merged-map: ();
+
+  @each $map in $maps {
+    $merged-map: map.merge($merged-map, $map);
+  }
+
+  @return $merged-map;
+}
+
+@function check($map, $keys...) {
+  @each $key in $keys {
+    @if not map.has-key($map, $key) {
+      @return false;
+    }
+    $map: map.get($map, $key);
+  }
+
+  @return true;
+}
+
+@function fetch($map, $keys...) {
+  @each $key in $keys {
+    $map: map.get($map, $key);
+  }
+
+  @return $map;
+}
+
+@function update($map, $keys.../*, $value */) {
+  $map-list: ($map,);
+  $return: null;
+
+  @if list.length($keys) == 2 {
+    @return map.merge($map, (list.nth($keys, 1): list.nth($keys, -1)));
+  }
+
+  @for $i from 1 through list.length($keys) - 2 {
+    $map-list: list.append($map-list, map.get(list.nth($map-list, -1), list.nth($keys, $i)));
+  }
+
+  @for $i from list.length($map-list) through 1 {
+    $return: map.merge(list.nth($map-list, $i), (list.nth($keys, $i): if($i == list.length($map-list), list.nth($keys, -1), $return)));
+  }
+
+  @return $return;
+}

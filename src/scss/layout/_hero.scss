@@ -1,0 +1,53 @@
+@use '../config';
+
+.hero {
+  // --side-fade: linear-gradient(
+  //   to bottom,
+  //   hsl(0 0% var(--background-lightness) / 0),
+  //   hsl(0 0% var(--background-lightness) / 1)
+  // );
+
+  position: relative;
+  display: grid;
+  place-content: center;
+  isolation: isolate;
+
+  &__title {
+    position: relative;
+    z-index: 10000;
+    color: var(--foreground);
+    mix-blend-mode: var(--blend-mode);
+    text-transform: uppercase;
+    pointer-events: none;
+    margin-block-end: 5vmax;
+  }
+
+  &__img {
+    --wmax: 250px;
+    max-width: var(--wmax);
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    will-change: transform;
+    filter: hue-rotate(70deg) contrast(70%);
+  }
+}
+
+@include config.respond('tablet') {
+  .hero {
+    height: 100vh;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      z-index: 999;
+      display: inline-block;
+      width: 100vw;
+      height: 4vw;
+      background: var(--side-fade);
+    }
+  }
+}

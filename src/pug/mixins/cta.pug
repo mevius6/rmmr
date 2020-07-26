@@ -1,0 +1,19 @@
+mixin ctaSet(text)
+  each i in Array.from(Array(4))
+    span
+  each i in Array.from(Array(4))
+    p(aria-hidden="true")= text
+
+mixin cta(props)
+  if props.type === 'anchor'
+    a(class=`${props.base}__cta` href=props.link)= props.text
+      +ctaSet(props.text)
+  if props.type === 'button'
+    button(
+      class=`${props.base}__cta`
+      type=`${(props.base === 'form')
+        ? 'submit'
+        : 'button'}`
+      tabindex='0'
+      )&attributes(attributes)= props.text
+      +ctaSet(props.text)

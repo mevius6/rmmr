@@ -1,0 +1,182 @@
+@use 'config';
+
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+* {
+  @include config.scrollbar;
+  box-sizing: inherit;
+
+  &::before,
+  &::after {
+    box-sizing: inherit;
+  }
+
+  &::selection {
+    background: var(--selection-background, inherit);
+    color: var(--selection-foreground, inherit);
+    text-shadow: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+:root {
+  // ? https://www.sarasoueidan.com/blog/style-settings-with-css-variables/
+  // https://jakearchibald.github.io/svgomg/
+  // https://codepen.io/jakob-e/pen/doMoML
+  // https://yoksel.github.io/url-encoder/ru/
+  --sun: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cdefs/%3E%3Cpath fill='%23fff' d='M256 143.7c-61.8 0-112 50.3-112 112.1s50.2 112.1 112 112.1 112-50.3 112-112.1-50.2-112.1-112-112.1zm0 192.2c-44.1 0-80-35.9-80-80.1s35.9-80.1 80-80.1 80 35.9 80 80.1-35.9 80.1-80 80.1zm256-80.1c0-5.3-2.7-10.3-7.1-13.3L422 187l19.4-97.9c1-5.2-.6-10.7-4.4-14.4-3.8-3.8-9.1-5.5-14.4-4.4l-97.8 19.4-55.5-83c-6-8.9-20.6-8.9-26.6 0l-55.5 83-97.8-19.5c-5.3-1.1-10.6.6-14.4 4.4-3.8 3.8-5.4 9.2-4.4 14.4L90 187 7.1 242.5c-4.4 3-7.1 8-7.1 13.3 0 5.3 2.7 10.3 7.1 13.3L90 324.6l-19.4 97.9c-1 5.2.6 10.7 4.4 14.4 3.8 3.8 9.1 5.5 14.4 4.4l97.8-19.4 55.5 83c3 4.5 8 7.1 13.3 7.1s10.3-2.7 13.3-7.1l55.5-83 97.8 19.4c5.4 1.2 10.7-.6 14.4-4.4 3.8-3.8 5.4-9.2 4.4-14.4L422 324.6l82.9-55.5c4.4-3 7.1-8 7.1-13.3zm-116.7 48.1c-5.4 3.6-8 10.1-6.8 16.4l16.8 84.9-84.8-16.8c-6.6-1.4-12.8 1.4-16.4 6.8l-48.1 72-48.1-71.9c-3-4.5-8-7.1-13.3-7.1-1 0-2.1.1-3.1.3l-84.8 16.8 16.8-84.9c1.2-6.3-1.4-12.8-6.8-16.4l-71.9-48.1 71.9-48.2c5.4-3.6 8-10.1 6.8-16.4l-16.8-84.9 84.8 16.8c6.5 1.3 12.8-1.4 16.4-6.8l48.1-72 48.1 72c3.6 5.4 9.9 8.1 16.4 6.8l84.8-16.8-16.8 84.9c-1.2 6.3 1.4 12.8 6.8 16.4l71.9 48.2-71.9 48z'/%3E%3C/svg%3E");
+  --moon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cdefs/%3E%3Cpath fill='%23fff' d='M448.964 365.617C348.188 384.809 255.14 307.765 255.14 205.419c0-58.893 31.561-112.832 82.574-141.862 25.83-14.7 19.333-53.859-10.015-59.28A258.114 258.114 0 00280.947 0c-141.334 0-256 114.546-256 256 0 141.334 114.547 256 256 256 78.931 0 151.079-35.924 198.85-94.783 18.846-23.22-1.706-57.149-30.833-51.6zM280.947 480c-123.712 0-224-100.288-224-224s100.288-224 224-224c13.984 0 27.665 1.294 40.94 3.745-58.972 33.56-98.747 96.969-98.747 169.674 0 122.606 111.613 214.523 231.81 191.632C413.881 447.653 351.196 480 280.947 480z'/%3E%3C/svg%3E");
+
+  // https://drafts.csswg.org/css-color-adjust/#color-scheme-prop
+  // https://drafts.csswg.org/css-color-adjust-1/#color-schemes
+  // https://web.dev/color-scheme/#the-color-scheme-css-property
+  color-scheme: dark light;
+
+  // https://ishadeed.com/article/css-min-max-clamp/
+  // https://codepen.io/2kool2/pen/wvKrboQ
+  font-size: clamp(1rem, calc(1rem + ((1vw - 0.48rem) * 0.6944)), 1.5rem);
+}
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  html,
+  body {
+    scroll-behavior: smooth;
+  }
+}
+
+// https://allthingssmitty.com/2020/05/11/css-fix-for-100vh-in-mobile-webkit/#disqus_thread
+html { height: -webkit-fill-available; }
+
+body {
+  --easing: cubic-bezier(0.2, 1, 0.3, 1);
+  --spacing: 1rem;
+
+  // https://drafts.csswg.org/css-color-4/#the-hsl-notation
+  // https://drafts.csswg.org/css-color-4/#css-system-colors
+  // https://codepen.io/jimniels/pen/abvXbvp
+  --h: 0;
+  --s: 0%;
+  --l: 0%;
+  --hsl: var(--h) var(--s) var(--l);
+
+  --background: hsl(
+    var(--hsl)
+  );
+  --foreground: hsl(
+    var(--h)
+    var(--s)
+    calc(var(--l) + 100%)
+  );
+  --accent: hsl(
+    calc(var(--h) + 168)
+    calc(var(--s) + 100%)
+    calc(var(--l) + 50%)
+  );
+  --shadow: hsl(
+    var(--hsl) / var(--a, .16)
+  );
+  --blend-mode: difference;
+  /*
+  --alert: ; // error, warning, success */
+
+  --cursor-stroke-color: var(--foreground);
+  --cursor-stroke-width: 1px;
+
+  --theme-switch-border-color: var(--foreground);
+  --theme-switch-light-icon: var(--sun);
+  --theme-switch-dark-icon: var(--moon);
+  --theme-switch-icon-size: 1rem;
+
+  overflow-x: hidden;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  font-weight: 400;
+  line-height: 1.45;
+  text-rendering: optimizeSpeed;
+
+  @include config.respond('retina') {
+    & {
+      /* autoprefixer: off */
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+    }
+  }
+
+  [data-theme="light"] & {
+    --blend-mode: overlay;
+    --background: hsl(
+      var(--h)
+      var(--s)
+      calc(var(--l) + 100%)
+    );
+    --foreground: hsl(
+      var(--hsl)
+    );
+    --accent: hsl(
+      calc(var(--h) + 72)
+      calc(var(--s) + 100%)
+      calc(var(--l) + 50%)
+    );
+    --side-fade: linear-gradient(
+      to bottom,
+      hsl(var(--hsl) / var(--a, 0)),
+      hsl(
+        var(--h)
+        var(--s)
+        calc(var(--l) + 100%) /
+        var(--a, 1)
+      )
+    );
+  }
+
+  [data-theme="dark"] & {
+    --blend-mode: difference;
+    --background-lightness: 0%;
+    --background: hsl(
+      var(--hsl)
+    );
+    --foreground: hsl(
+      var(--h)
+      var(--s)
+      calc(var(--l) + 100%)
+    );
+    --accent: hsl(
+      calc(var(--h) + 168)
+      calc(var(--s) + 100%)
+      calc(var(--l) + 50%)
+    );
+    --shadow: hsl(
+      var(--hsl) / var(--a, 0)
+    );
+    --side-fade: linear-gradient(
+      to bottom,
+      hsl(var(--hsl) / var(--a, 0)),
+      hsl(var(--hsl) / var(--a, 1))
+    );
+  }
+}
+
+[data-hidden] {
+  @include config.is-hidden;
+}
+
+.a2hs {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  background-color: transparent;
+  font-size: 1rem;
+  padding: 1.5rem;
+
+  &.hidden { display: none; }
+}
+
+@include config.respond('tablet') {
+  //
+}

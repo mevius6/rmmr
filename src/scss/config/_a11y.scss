@@ -1,0 +1,20 @@
+/**
+ * Скрывает элемент визуально и удаляет его из базового потока,
+ * но позволяет вспомогательным технологиям получить к нему доступ.
+ *
+ * https://github.com/h5bp/html5-boilerplate/blob/master/dist/css/main.css#L114
+ * https://gist.github.com/hankchizljaw/fae40371ada3ea4301624091bf4379e9
+ * https://css-tricks.com/snippets/css/accessibilityseo-friendly-css-hiding/
+ */
+
+@mixin is-hidden {
+  position: absolute;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  width: 1px;
+  height: auto;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

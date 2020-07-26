@@ -1,0 +1,35 @@
+@use '../config';
+
+// TODO: Создать переиспользуемый виджет (веб-компонент) c2a-кнопки
+// https://github.com/mdn/web-components-examples#web-components-examples
+// https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible
+// https://drafts.csswg.org/selectors-4/#the-focus-visible-pseudo
+
+button {
+  position: relative;
+  display: grid;
+  place-content: center;
+  border-radius: 4px;
+  min-block-size: 44px;
+  background: var(--button-background, var(--background));
+  padding: 0 8px;
+  overflow: hidden;
+  color: var(--button-text-color, var(--foreground));
+  line-height: 1;
+  will-change: transform;
+  box-shadow: 0 4px 12px var(--shadow);
+  transition: transform 150ms ease-in-out, box-shadow 150ms ease-in-out;
+
+  // &:hover,
+  // &:focus,
+  // &:active {}
+
+  &:active {
+    transform: translateY(1px);
+    box-shadow: 0 0 0 var(--shadow);
+  }
+
+  &[class$="cta"] {
+    @include config.directional-clipping();
+  }
+}
