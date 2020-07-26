@@ -1,5 +1,5 @@
 import * as ThemeSwitch from './ThemeSwitch';
-import MouseCursor from './MouseCursor';
+// import MouseCursor from './MouseCursor';
 // import { ImageTrail } from './ImageTrail';
 import { canUseWebP } from './utils';
 
@@ -7,7 +7,7 @@ const root = document.documentElement;
 const body = document.body;
 
 const toggle = document.querySelector('theme-switch');
-const cursor = new MouseCursor(document.querySelector('.cursor'));
+// const cursor = new MouseCursor(document.querySelector('.cursor'));
 
 [...document.querySelectorAll('a, button')].forEach(el => {
   el.addEventListener('mouseenter', () => cursor.emit('enter'));
