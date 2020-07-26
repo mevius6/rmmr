@@ -29,13 +29,13 @@
   },
   "homepage": "https://github.com/mevius6/rmmr#readme",
   "devDependencies": {
-    "autoprefixer": "^9.8.0",
-    "parcel": "^2.0.0-nightly.277",
+    "autoprefixer": "^9.8.5",
+    "parcel": "^2.0.0-nightly.352",
     "pug": "^2.0.4",
-    "sass": "^1.26.7"
+    "sass": "^1.26.10"
   },
   "dependencies": {
-    "gsap": "^3.3.0"
+    "gsap": "^3.4.2"
   },
   "browserslist": [
     ">0.2%",
